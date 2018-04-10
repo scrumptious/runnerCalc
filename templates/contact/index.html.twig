@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Get in touch{% endblock %}
+
+{% block body %}
+    {% include '_navbar.html.twig' %}
+<div class="row">
+    <div class="offset-md-2 col-md-8 offset-lg-2 col-lg-8">
+        <h1>Get in touch</h1>
+        <p class="lead">Whether you need an extra advice or just want to talk with someone like minded! Use this concact form
+        to let me know what do you think about this website.</p>
+        <p class="lead">Your feedback matters!</p>
+    </div>
+</div>
+<div class="row">
+    <div class="offset-md-2 col-md-4 offset-lg-2 col-lg-4">
+        {#{% include 'contact/_form.html.twig' %}#}
+        {{ form_start(contactForm) }}
+        {{ form_widget(contactForm) }}
+        {{ form_end(contactForm) }}
+    </div>
+</div>
+{% endblock %}

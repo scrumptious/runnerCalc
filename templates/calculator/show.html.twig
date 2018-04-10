@@ -1,0 +1,8 @@
+{%  extends 'base.html.twig' %}
+{% block title %}Calculate predicted result{% endblock %}
+{%  block body %}
+    {% include '_navbar.html.twig' %}
+    {{ form_start(calculatorForm) }}
+    {{ form_widget(calculatorForm) }}
+    {{ form_end(calculatorForm) }}
+{%  endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Runner's Calculator{% endblock %}
+
+{% block body %}
+{% include '_navbar.html.twig' %}
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-3">Hello, runner!</h1>
+        <p class="lead">This is a running pace calculator for all of your needs. Whether you're preparing for
+            a race or just wondering what your training run pace should be this tool will help you out.</p>
+        <p class="lead">Don't undertrain, don't let fatique build up too fast. Train, rest, improve, repeat!</p><br>
+        <p class="text-center"><a class="btn btn-primary btn-lg" href="{{ path('app_calculator') }}" role="button">Calculate paces &raquo;</a></p>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-8 col-lg-8">
+            <h2>Did you know?</h2>
+            <p class="lead mt-4"><i>"{{ random_fact }}"</i></p>
+            <p class="mt-4"><a href="https://www.runtothefinish.com/28-interesting-running-facts/" role="button">Source:
+                    <i>https://www.runtothefinish.com/28-interesting-running-facts/ &raquo;</i></a></p>
+        </div>
+        <div class="col-md-4 col-lg-4">
+            {#<h2>Heading</h2>#}
+            {#<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>#}
+            {#<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>#}
+        </div>
+    </div>
+{% endblock %}
