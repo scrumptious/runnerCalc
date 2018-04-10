@@ -21,10 +21,10 @@ class ContactType extends AbstractType {
 
   public function buildForm(FormBuilderInterface $builder, array $options) {
     $builder
-      ->add('name', TextType::class, array('attr' => array('class' => 'calculator-control')))
-      ->add('email',EmailType::class, array('attr' => array('class' => 'calculator-control')))
-      ->add('subject', TextType::class, array('attr' => array('class' => 'calculator-control')))
-      ->add('message', TextareaType::class, array('attr' => array('class' => 'calculator-control')))
+      ->add('name', TextType::class, array('attr' => array('class' => 'form-control')))
+      ->add('email',EmailType::class, array('attr' => array('class' => 'form-control')))
+      ->add('subject', TextType::class, array('attr' => array('class' => 'form-control')))
+      ->add('message', TextareaType::class, array('attr' => array('class' => 'form-control')))
       ->add('save', SubmitType::class, array('label' => 'Send enquiry', 'attr' => array('class' => 'btn btn-primary mt-2')))
     ;
   }

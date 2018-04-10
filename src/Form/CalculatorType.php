@@ -21,9 +21,11 @@ class CalculatorType extends AbstractType {
 
   public function buildForm(FormBuilderInterface $builder, array $options) {
     $builder
-      ->add('distance', NumberType::class, array('attr' => array('class' => 'calculator-control')))
-      ->add('time', TimeType::class, array('attr' => array('class' => 'calculator-control')))
-      ->add('send', SubmitType::class, array('attr' => array('class' => 'btn btn-primary')))
+      ->add('distance', NumberType::class, array('attr' => array('class' => 'form-control')))
+      ->add('hours', NumberType::class, array('attr' => array('class' => 'form-control')))
+      ->add('minutes', NumberType::class, array('attr' => array('class' => 'form-control')))
+      ->add('seconds', NumberType::class, array('attr' => array('class' => 'form-control')))
+      ->add('send', SubmitType::class, array('attr' => array('class' => 'btn btn-primary mt-3')))
     ;
 
   }

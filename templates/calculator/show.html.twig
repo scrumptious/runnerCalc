@@ -2,7 +2,36 @@
 {% block title %}Calculate predicted result{% endblock %}
 {%  block body %}
     {% include '_navbar.html.twig' %}
-    {{ form_start(calculatorForm) }}
-    {{ form_widget(calculatorForm) }}
-    {{ form_end(calculatorForm) }}
+    <div class="row">
+        <div class="offset-md-2 col-md-6 offset-lg-2 col-lg-6 mt-4">
+        <p class="lead text-center">
+            Type in your best recent result. It might be from race or training when you have run all out.
+            Calculator will show you training paces you can use and what results at races of different distance you can expect.
+        </p>
+        <h3 class="text-center mt-4 mb-4">Best result</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-md-4 col-md-2 offset-lg-4 col-lg-2">
+            {{ form_start(calculatorForm) }}
+            {{ form_row(calculatorForm.distance) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-md-4 col-md-2 offset-lg-4 col-lg-2">
+            <div class="form-row">
+                <div class="col">
+
+            {{ form_row(calculatorForm.hours) }}
+                </div>
+                <div class="col">
+            {{ form_row(calculatorForm.minutes) }}
+                </div>
+                <div class="col">
+            {{ form_row(calculatorForm.seconds) }}
+                </div>
+            {{ form_end(calculatorForm) }}
+            </div>
+        </div>
+    </div>
 {%  endblock %}

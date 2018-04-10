@@ -9,7 +9,7 @@
 use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\Route;
 use App\Controller\PaceController;
-use App\Controller\FormController;
+use App\Controller\CalculatorController;
 
 $routes = new RouteCollection();
 $routes->add(
@@ -25,7 +25,7 @@ $routes->add(
 $routes->add(
   'form_gather',
   new Route('/{slug}/', array(
-    '_controller' => [FormController::class, 'gather'],
+    '_controller' => [CalculatorController::class, 'gather'],
     'slug' => ''
   ))
 );

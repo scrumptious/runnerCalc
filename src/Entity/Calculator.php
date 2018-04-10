@@ -18,10 +18,19 @@ class Calculator {
   protected $distance;
 
   /**
-   * @Assert\NotBlank()
-   * @Assert\Type("Time")
+   * @Assert\Type("Number")
    */
-  protected $time;
+  protected $hours;
+
+  /**
+   * @Assert\Type("Number")
+   */
+  protected $minutes;
+
+  /**
+   * @Assert\Type("Number")
+   */
+  protected $seconds;
 
 
   public function getDistance() {
@@ -31,12 +40,27 @@ class Calculator {
     $this->distance = $distance;
   }
 
-  public function getTime() {
-    return $this->time;
+  public function getHours() {
+    return $this->hours;
   }
-  public function setTime($time): void {
-    $this->time = $time;
+  public function setHours($hours): void {
+    $this->hours = $hours;
   }
+
+  public function getMinutes() {
+    return $this->minutes;
+  }
+  public function setMinutes($minutes): void {
+    $this->minutes = $minutes;
+  }
+
+  public function getSeconds() {
+    return $this->seconds;
+  }
+  public function setSeconds($seconds): void {
+    $this->seconds = $seconds;
+  }
+
 
 
 }
