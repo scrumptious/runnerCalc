@@ -67,7 +67,7 @@ class Contact {
     return $this->sentDate;
   }
   public function setSentDate(\DateTime $sentDate): void {
-    $this->sentDate = $sentDate;
+    $this->sentDate = new \DateTime('now');
   }
 
 

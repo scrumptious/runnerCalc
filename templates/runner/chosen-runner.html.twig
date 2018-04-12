@@ -3,17 +3,9 @@
     {% include '_navbar.html.twig' %}
     <div class="row">
         <div class="offset-md-2 offset-lg-2 col-md-8 col-lg-8">
-            {% if runners is iterable %}
             <ul class="runners">
-                {% for runner in runners %}
                     <li>{{ runner.name }} run {{ runner.distance }} in {{ runner.hours }}:{{ runner.minutes }}:{{ runner.seconds }}</li>
-                {% endfor %}
-                {% endif %}
-                {% if runners is not iterable %}
-                    <p>{{ runners.name }} run {{ runners.distance }} in {{ runners.hours }}:{{ runners.minutes }}:{{ runners.seconds }}</p>
             </ul>
-            {% else %}
-            {% endif %}
         </div>
     </div>
 {% endblock %}

@@ -18,6 +18,8 @@ class CalculatorController extends Controller {
     $calculator = new Calculator();
     $calculatorForm = $this->createForm(CalculatorType::class, $calculator);
 
+    $calculatorForm->handleRequest($request);
+
     if($calculatorForm->isSubmitted() && $calculatorForm->isValid()) {
       $calculator = $calculatorForm->getData();
 

@@ -3,12 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\ContactType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -27,13 +24,7 @@ class ContactController extends Controller
       if($contactForm->isSubmitted() && $contactForm->isValid()) {
         $contact = $contactForm->getData();
 
-        // ... perform some action, such as saving the task to the database
-        // for example, if Task is a Doctrine entity, save it!
-        // $entityManager = $this->getDoctrine()->getManager();
-        // $entityManager->persist($task);
-        // $entityManager->flush();
-
-        return $this->redirectToRoute('app_contact');
+        return $this->redirectToRoute('app_email_sent');
       }
 
       return $this->render('contact/index.html.twig', array(
@@ -41,11 +32,25 @@ class ContactController extends Controller
       ));
     }
 
+  /**
+   * @Route("/contact/sent", name="app_email_sent")
+   *
+   */
+    public function send(Request $request, \Swift_Mailer $mailer) {
+      $name = $request->get('name');
+      $email = $request->get('email');
+      $message = (new \Swift_Message('Thank you for getting in touch'))
+        ->setFrom($email)
+        ->setTo('ljasiurski@gmail.com')
+        ->setBody(
+          $this->renderView('contact\message.html.twig',
+            array('name' => $name)
+          ),
+          'text/html'
+        )
+      ;
+      $mailer->send($message);
+      return $this->redirectToRoute('app_homepage');
+    }
 
-
-//    public function index() {
-//        return $this->render('contact/index.html.twig', [
-//            'controller_name' => 'ContactController',
-//        ]);
-//    }
 }

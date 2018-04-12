@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+//use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -9,13 +10,13 @@ use App\Entity\Runner;
 
 class RunnerController extends Controller {
     /**
-     * @Route("/runner", name="app_runner")
+     * @Route("/runner/", name="app_runner")
      */
     public function index() {
       $runner = new Runner();
-        $entityManager = $this->getDoctrine()->getManager();
-        $repository = $entityManager->getRepository(Runner::class);
-        $runner = $repository->findAll();
+      $entityManager = $this->getDoctrine()->getManager();
+      $repository = $entityManager->getRepository(Runner::class);
+      $runner = $repository->findAll();
 
 //        $runner = new Runner();
 //
@@ -31,29 +32,29 @@ class RunnerController extends Controller {
 //
 //        $entityManager->flush();
 
-
-        return $this->render('runner/index.html.twig', array(
-          'runners' => $runner
-        ));
-        //return $this->redirectToRoute('app_homepage');
+        if($runner) {
+          return $this->render('runner/index.html.twig', array(
+            'runners' => $runner
+          ));
+        }
+        return new Response('<h1>No runners in a database</h1>');
     }
 
   /**
-   * @Route("/runner/{id}",
+   * @Route("/runner/{id}/",
    * name="app_runner_show")
    */
     public function show($id) {
-      $runner = $this->getDoctrine()
-        ->getRepository(Runner::class)
+      $entityManager = $this->getDoctrine()->getManager();
+      $runner = $entityManager->getRepository(Runner::class)
         ->find($id);
-
-      if(!$runner) {
-        $this->render('runner\no-results.html.twig', array(
-          'runners' => 'undefined'
+      if($runner === NULL) {
+        return $this->render('runner\no-results.html.twig');
+      }
+      else {
+        return $this->render('runner\chosen-runner.html.twig', array(
+          'runner' => $runner
         ));
       }
-      return $this->render('runner\index.html.twig', array(
-        'runners' => $runner
-      ));
     }
 }
